@@ -235,6 +235,7 @@ type Handler = fn() -> result::Result<(), sup::error::SupError>;
 /// * Exit cleanly, or if we return an `Error`, call `exit_with(E, 1)`
 #[allow(dead_code)]
 fn main() {
+    println!("Test this code");
     env_logger::init().unwrap();
     crypto_init();
 
