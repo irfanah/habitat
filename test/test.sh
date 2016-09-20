@@ -31,8 +31,9 @@ cat banner
 
 # load in common test env vars
 if [ "${TRAVIS}" = "true" ]; then
-    HAB=/home/travis/build/habitat-sh/habitat/target/debug/hab
-    find /home/travis
+    echo "Hi, my path is:"
+    pwd
+    HAB=/home/travis/build/habitat-sh/target/debug/hab
 else
     HAB=/bin/hab
 fi
