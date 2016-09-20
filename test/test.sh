@@ -32,7 +32,7 @@ cat banner
 # load in common test env vars
 if [ "${TRAVIS}" = "true" ]; then
     HAB=/home/travis/build/habitat-sh/habitat/target/debug/hab
-    find /home/travis/build
+    find /home/travis
 else
     HAB=/bin/hab
 fi
