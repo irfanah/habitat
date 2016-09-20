@@ -18,6 +18,8 @@
 # limitations under the License.
 
 set -e
+# TODO
+set -x
 
 # The list of all specs to run after basic and env tests are run.
 # WITHOUT .rb suffix.
@@ -30,6 +32,7 @@ cat banner
 # load in common test env vars
 if [ "${TRAVIS}" = "true" ]; then
     HAB=/home/travis/build/habitat-sh/habitat/target/debug/hab
+    find /home/travis/build/habitat-sh
 else
     HAB=/bin/hab
 fi
