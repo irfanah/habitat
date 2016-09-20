@@ -28,7 +28,11 @@ all_specs=(crypto)
 cat banner
 
 # load in common test env vars
-HAB=/bin/hab
+if [ "${TRAVIS}" = "true" ]; then
+    HAB=/home/travis/build/habitat-sh/habitat/target/debug/hab
+else
+    HAB=/bin/hab
+fi
 
 export INSPEC_PACKAGE=core/inspec
 export RUBY_PACKAGE=core/ruby
