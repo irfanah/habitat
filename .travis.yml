@@ -42,6 +42,7 @@ matrix:
     - ./support/ci/compile_libarchive.sh
     - ./support/ci/install_rustfmt.sh
     - ./support/ci/install_cargo.sh
+    - mkdir /hab
     script:
     - make
     - ./support/ci/rust_tests.sh
