@@ -50,7 +50,7 @@ install_package() {
     description=$2
 
     echo "» Installing ${description}"
-    ${HAB} pkg install "${pkg_to_install}" >> ./logs/pkg_install.log 2>&1
+    ${HAB} pkg install "${pkg_to_install}"
     echo "★ Installed ${description}"
 }
 
