@@ -18,6 +18,7 @@ run_tests() {
 id
 echo "Your effective userid is ${EUID}"
 echo "Your home directory is ${HOME}"
+env
 
 # TODO
 # https://docs.travis-ci.com/user/pull-requests
