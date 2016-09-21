@@ -43,6 +43,7 @@ matrix:
     - ./support/ci/install_rustfmt.sh
     - ./support/ci/install_cargo.sh
     script:
+    - make
     - ./support/ci/rust_tests.sh
     - ./support/ci/specs.sh
     - ./support/ci/lint.sh
