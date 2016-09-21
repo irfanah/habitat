@@ -34,7 +34,8 @@ if [ "${TRAVIS}" = "true" ]; then
     echo "Hi, my path is:"
     pwd
     HAB=/home/travis/build/habitat-sh/habitat/target/debug/hab
-    find /home/travis/build/habitat-sh/habitat/target/
+    echo "The hab binary is located here:"
+    find / -name "hab" -type f
 else
     HAB=/bin/hab
 fi
