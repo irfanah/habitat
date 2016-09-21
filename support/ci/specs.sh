@@ -15,6 +15,10 @@ run_tests() {
   ./test.sh
 }
 
+id
+echo "Your effective userid is ${EUID}"
+echo "Your home directory is ${HOME}"
+
 # TODO
 # https://docs.travis-ci.com/user/pull-requests
 if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
