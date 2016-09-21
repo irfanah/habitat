@@ -35,7 +35,7 @@ if [ "${TRAVIS}" = "true" ]; then
     # /home/travis/build/habitat-sh/habitat/test
     pwd
     HAB=/home/travis/build/habitat-sh/habitat/target/debug/hab
-    find /home/travis/
+    find /home/travis/build/
 else
     HAB=/bin/hab
 fi
