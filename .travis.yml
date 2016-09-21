@@ -45,7 +45,7 @@ matrix:
     - ./support/ci/install_cargo.sh
     script:
     - make build-bin
-    - ./support/ci/specs.sh
+    - sudo ./support/ci/specs.sh
   - language: rust
     env:
     - COMPONENTS=bin LIBSODIUM=$HOME/pkgs/libsodium/1.0.8 LIBARCHIVE=$HOME/pkgs/libarchive/3.2.0 PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$LIBARCHIVE/lib/pkgconfig:$LIBSODIUM/lib/pkgconfig" LD_LIBRARY_PATH="LD_LIBRARY_PATH:$LIBARCHIVE/lib:$LIBSODIUM/lib"
