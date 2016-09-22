@@ -26,6 +26,12 @@ echo "Your effective userid is ${EUID}"
 echo "Your home directory is ${HOME}"
 env
 
+echo "LDD!"
+ldd /home/travis/build/habitat-sh/habitat/target/debug/hab
+
+echo "READELF!"
+readelf -ld /home/travis/build/habitat-sh/habitat/target/debug/hab
+
 # TODO
 # https://docs.travis-ci.com/user/pull-requests
 if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
