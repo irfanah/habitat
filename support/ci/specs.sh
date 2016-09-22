@@ -21,16 +21,8 @@ export LIBARCHIVE=/home/travis/pkgs/libarchive/3.2.0
 export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$LIBARCHIVE/lib/pkgconfig:$LIBSODIUM/lib/pkgconfig"
 export LD_LIBRARY_PATH="LD_LIBRARY_PATH:$LIBARCHIVE/lib:$LIBSODIUM/lib"
 
-id
-echo "Your effective userid is ${EUID}"
-echo "Your home directory is ${HOME}"
-env
-
-echo "LDD!"
-ldd /home/travis/build/habitat-sh/habitat/target/debug/hab
-
-echo "READELF!"
-readelf -ld /home/travis/build/habitat-sh/habitat/target/debug/hab
+adduser --system hab || true
+addgroup --system hab || true
 
 # TODO
 # https://docs.travis-ci.com/user/pull-requests
