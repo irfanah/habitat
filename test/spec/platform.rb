@@ -302,6 +302,9 @@ module HabTesting
             if not @cleanup
                 puts "WARNING: not cleaning up testing environment"
                 puts "Please run #{@cleanup_filename} manually"
+                if ENV['TRAVIS'] then
+                    `cat #{@cleanup_filename}`
+                end
             end
 
         end
