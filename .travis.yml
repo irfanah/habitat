@@ -43,7 +43,6 @@ matrix:
     - ./support/ci/install_rustfmt.sh
     - ./support/ci/install_cargo.sh
     script:
-    - sudo ldconfig
     - make build-bin
     - sudo ./support/ci/specs.sh
   - language: rust
