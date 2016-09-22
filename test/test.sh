@@ -101,6 +101,7 @@ echo "☛ ${test_start}"
 echo "» Checking for a clean test environment"
 ${INSPEC} exec ./hab_inspec/controls/clean_env.rb
 
+env
 echo "» Checking basic build/install/run functionality"
 ${RSPEC} ./spec/basic.rb
 

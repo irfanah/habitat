@@ -25,7 +25,6 @@ id
 echo "Your effective userid is ${EUID}"
 echo "Your home directory is ${HOME}"
 env
-find /home/travis/pkgs/libarchive/3.2.0
 
 # TODO
 # https://docs.travis-ci.com/user/pull-requests
