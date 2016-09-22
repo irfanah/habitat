@@ -13,6 +13,7 @@ set -e
 run_tests() {
   cd test
   ./test.sh
+  cat ./logs/*.log
 }
 
 # set these here so Travis is happy, setting them in .travis.yml + sudo
