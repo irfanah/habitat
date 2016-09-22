@@ -15,6 +15,12 @@ run_tests() {
   ./test.sh
 }
 
+export COMPONENTS=bin
+export LIBSODIUM=/home/travis/pkgs/libsodium/1.0.8
+export LIBARCHIVE=/home/travis/pkgs/libarchive/3.2.0
+export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$LIBARCHIVE/lib/pkgconfig:$LIBSODIUM/lib/pkgconfig"
+export LD_LIBRARY_PATH="LD_LIBRARY_PATH:$LIBARCHIVE/lib:$LIBSODIUM/lib"
+
 id
 echo "Your effective userid is ${EUID}"
 echo "Your home directory is ${HOME}"
