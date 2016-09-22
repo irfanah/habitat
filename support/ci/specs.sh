@@ -26,8 +26,12 @@ export LD_LIBRARY_PATH="LD_LIBRARY_PATH:$LIBARCHIVE/lib:$LIBSODIUM/lib"
 export HAB_TEST_BIN_DIR=/home/travis/build/habitat-sh/habitat/target/debug
 export HAB_TEST_DEBUG=true
 
+
 adduser --system hab || true
 addgroup --system hab || true
+
+mkdir /hab
+chown hab:hab /hab
 
 # TODO
 # https://docs.travis-ci.com/user/pull-requests
