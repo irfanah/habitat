@@ -15,11 +15,14 @@ run_tests() {
   ./test.sh
 }
 
+# set these here so Travis is happy, setting them in .travis.yml + sudo
+# makes the tests unhappy.
 export COMPONENTS=bin
 export LIBSODIUM=/home/travis/pkgs/libsodium/1.0.8
 export LIBARCHIVE=/home/travis/pkgs/libarchive/3.2.0
 export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$LIBARCHIVE/lib/pkgconfig:$LIBSODIUM/lib/pkgconfig"
 export LD_LIBRARY_PATH="LD_LIBRARY_PATH:$LIBARCHIVE/lib:$LIBSODIUM/lib"
+export HAB_TEST_BIN_DIR=/home/travis/build/habitat-sh/habitat/target/debug
 
 adduser --system hab || true
 addgroup --system hab || true

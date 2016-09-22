@@ -32,6 +32,7 @@ cat banner
 # load in common test env vars
 if [ "${TRAVIS}" = "true" ]; then
     export PATH=$PATH:/home/travis/build/habitat-sh/habitat/target/debug/
+    # TODO: move this outside of test.sh?
     HAB=/home/travis/build/habitat-sh/habitat/target/debug/hab
 else
     HAB=/bin/hab
