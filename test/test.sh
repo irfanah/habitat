@@ -31,6 +31,7 @@ cat banner
 
 # load in common test env vars
 if [ "${TRAVIS}" = "true" ]; then
+    export PATH=$PATH:/home/travis/build/habitat-sh/habitat/target/debug/
     HAB=/home/travis/build/habitat-sh/habitat/target/debug/hab
 else
     HAB=/bin/hab
@@ -57,10 +58,10 @@ install_package ${INSPEC_PACKAGE} "Chef Inspec"
 install_package ${BUNDLER_PACKAGE} "Bundler"
 
 
-INSPEC_BUNDLE="$(hab pkg path $INSPEC_PACKAGE)/bundle"
+INSPEC_BUNDLE="$(${HAB} pkg path $INSPEC_PACKAGE)/bundle"
 GEM_HOME="${INSPEC_BUNDLE}/ruby/${RUBY_VERSION}"
-GEM_PATH="$(hab pkg path ${RUBY_PACKAGE})/lib/ruby/gems/${RUBY_VERSION}:$(hab pkg path ${BUNDLER_PACKAGE}):${GEM_HOME}"
-LD_LIBRARY_PATH="$(hab pkg path core/gcc-libs)/lib)"
+GEM_PATH="$(${HAB} pkg path ${RUBY_PACKAGE})/lib/ruby/gems/${RUBY_VERSION}:$(${HAB} pkg path ${BUNDLER_PACKAGE}):${GEM_HOME}"
+LD_LIBRARY_PATH="$(${HAB} pkg path core/gcc-libs)/lib)"
 export INSPEC_BUNDLE
 export GEM_HOME
 export GEM_PATH
