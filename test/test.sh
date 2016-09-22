@@ -57,15 +57,18 @@ echo "Installing Habitat testing packages..."
 install_package ${INSPEC_PACKAGE} "Chef Inspec"
 install_package ${BUNDLER_PACKAGE} "Bundler"
 
+set_ld_library_path() {
+    INSPEC_BUNDLE="$(${HAB} pkg path $INSPEC_PACKAGE)/bundle"
+    GEM_HOME="${INSPEC_BUNDLE}/ruby/${RUBY_VERSION}"
+    GEM_PATH="$(${HAB} pkg path ${RUBY_PACKAGE})/lib/ruby/gems/${RUBY_VERSION}:$(${HAB} pkg path ${BUNDLER_PACKAGE}):${GEM_HOME}"
+    LD_LIBRARY_PATH="$(${HAB} pkg path core/gcc-libs)/lib)"
+    export INSPEC_BUNDLE
+    export GEM_HOME
+    export GEM_PATH
+    export LD_LIBRARY_PATH
+}
 
-INSPEC_BUNDLE="$(${HAB} pkg path $INSPEC_PACKAGE)/bundle"
-GEM_HOME="${INSPEC_BUNDLE}/ruby/${RUBY_VERSION}"
-GEM_PATH="$(${HAB} pkg path ${RUBY_PACKAGE})/lib/ruby/gems/${RUBY_VERSION}:$(${HAB} pkg path ${BUNDLER_PACKAGE}):${GEM_HOME}"
-LD_LIBRARY_PATH="$(${HAB} pkg path core/gcc-libs)/lib)"
-export INSPEC_BUNDLE
-export GEM_HOME
-export GEM_PATH
-export LD_LIBRARY_PATH
+set_ld_library_path
 
 INSPEC="${HAB} pkg exec ${INSPEC_PACKAGE} inspec"
 RSPEC="${HAB} pkg exec ${INSPEC_PACKAGE} rspec"
@@ -98,6 +101,7 @@ echo "» Running tests"
 test_start=$(date)
 echo "☛ ${test_start}"
 
+set_ld_library_path
 echo "» Checking for a clean test environment"
 ${INSPEC} exec ./hab_inspec/controls/clean_env.rb
 
