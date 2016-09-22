@@ -29,6 +29,11 @@ matrix:
         - libssl-dev
         - libzmq3-dev
         - pkg-config
+        - libarchive-dev
+        - libprotobuf-dev
+        - libsodium-dev
+        - libssl-dev
+        - libczmq-dev
     cache:
       apt: true
       cargo: true
