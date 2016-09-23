@@ -349,6 +349,7 @@ module HabTesting
             show_env() if debug
             # passing output to | tee
             #fullcmdline = "#{@hab_bin} #{cmdline} | tee -a #{log_file_name()} 2>&1"
+            ENV['DEBUG'] = "true"
             fullcmdline = "#{@hab_bin} #{cmdline}"
             # record the command we'll be running in the log file
             `echo #{fullcmdline} >> #{log_file_name()}`
@@ -356,7 +357,7 @@ module HabTesting
 
             output_log = open(log_file_name(), 'a')
             begin
-                Open3.popen3(fullcmdline) do |stdin, stdout, stderr, wait_thread|
+                Open3.popen3(ENV, fullcmdline) do |stdin, stdout, stderr, wait_thread|
                     @all_children << [fullcmdline, wait_thread.pid]
                     puts "Started child process id #{wait_thread[:pid]}" if debug
                     found = false
