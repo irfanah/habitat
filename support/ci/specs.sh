@@ -26,8 +26,13 @@ export LD_LIBRARY_PATH="LD_LIBRARY_PATH:$LIBARCHIVE/lib:$LIBSODIUM/lib"
 export PATH=$PATH:/home/travis/build/habitat-sh/habitat/target/debug/
 
 export HAB_TEST_BIN_DIR=/home/travis/build/habitat-sh/habitat/target/debug
-cp ${HAB_TEST_BIN_DIR}/hab /usr/bin/hab
-cp ${HAB_TEST_BIN_DIR}/hab-sup /usr/bin/hab-sup
+#cp ${HAB_TEST_BIN_DIR}/hab /usr/bin/hab
+#cp ${HAB_TEST_BIN_DIR}/hab-sup /usr/bin/hab-sup
+
+
+echo "BUSYBOX!"
+command -v busybox
+
 
 # TODO
 export HAB_TEST_DEBUG=true
