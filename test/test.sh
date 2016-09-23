@@ -35,6 +35,15 @@ if [ "${TRAVIS}" = "true" ]; then
     # TODO: move this outside of test.sh?
     HAB=/home/travis/build/habitat-sh/habitat/target/debug/hab
     export DEBUG=true
+
+    echo "TACOS!!!"
+
+    ls -la /hab/cache/keys
+    echo "VIN DIESEL"
+    ${HAB} pkg install core/hab-studio
+    p=$(${HAB} pkg path core/hab-studio)
+    sed -i 's/set -eu/set -eux/' "${p}/bin/hab-studio"
+
 else
     HAB=/bin/hab
 fi
