@@ -43,6 +43,7 @@ if [ "${TRAVIS}" = "true" ]; then
     ${HAB} pkg install core/hab-studio
     p=$(${HAB} pkg path core/hab-studio)
     sed -i 's/set -eu/set -eux/' "${p}/bin/hab-studio"
+    chmod 777 /hab/cache/keys/
 
 else
     HAB=/bin/hab
