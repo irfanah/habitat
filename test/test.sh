@@ -34,6 +34,7 @@ if [ "${TRAVIS}" = "true" ]; then
     export PATH=$PATH:/home/travis/build/habitat-sh/habitat/target/debug/
     # TODO: move this outside of test.sh?
     HAB=/home/travis/build/habitat-sh/habitat/target/debug/hab
+    export DEBUG=true
 else
     HAB=/bin/hab
 fi
