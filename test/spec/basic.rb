@@ -62,8 +62,8 @@ describe "Habitat CLI" do
             # and if the tests pass, the directory will be cleaned up
             # upon success
             ctx.register_dir "results"
-
             #`sed -i '23iecho "TACOS: $\{hab\}"' $(find /hab -name hab-studio-type-default.sh -type f)`
+            `hab studio enter`
 
             # building a package can take quite awhile, let's bump the timeout to
             # 60 seconds to be sure we finish in time.
