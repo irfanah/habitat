@@ -21,6 +21,7 @@ finish_setup() {
       # the `$FS_ROOT` set for the inside of the Studio. We're copying from
       # the outside in, using `hab` twice. I love my job.
 
+
       # if we don't set +e here, then the subshell exits upon
       # error without any output
       set +e

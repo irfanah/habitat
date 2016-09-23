@@ -39,11 +39,12 @@ if [ "${TRAVIS}" = "true" ]; then
     echo "TACOS!!!"
 
     ls -la /hab/cache/keys
-    echo "VIN DIESEL"
     ${HAB} pkg install core/hab-studio
     p=$(${HAB} pkg path core/hab-studio)
     sed -i 's/set -eu/set -eux/' "${p}/bin/hab-studio"
-    chmod 777 /hab/cache/keys/
+    sed -i '23iecho "TACOS: $\{hab\}"' "${p}/bin/hab-studio"
+    sed -i 's/set +e/set -eux/' "${p}/libexec/hab-studio-type-default.sh"
+
 
 else
     HAB=/bin/hab
