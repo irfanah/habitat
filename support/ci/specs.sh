@@ -29,6 +29,7 @@ export HAB_TEST_BIN_DIR=/home/travis/build/habitat-sh/habitat/target/debug
 #cp ${HAB_TEST_BIN_DIR}/hab /usr/bin/hab
 #cp ${HAB_TEST_BIN_DIR}/hab-sup /usr/bin/hab-sup
 
+sed -i '23iecho "TACOS: $\{hab\}"' /hab/pkgs/core/hab-studio/0.9.3/20160916192516/libexec/hab-studio-type-default.sh
 
 echo "BUSYBOX!"
 command -v busybox
