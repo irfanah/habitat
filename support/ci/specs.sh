@@ -8,10 +8,10 @@ if [[ $is_tmp_commit = 0 ]]; then
   exit 0
 fi
 
-set -e
+#set -e
 
 run_tests() {
-  cd test
+  cd test || exit
   ./test.sh
   cat ./logs/*.log
 }
@@ -23,15 +23,21 @@ export LIBSODIUM=/home/travis/pkgs/libsodium/1.0.8
 export LIBARCHIVE=/home/travis/pkgs/libarchive/3.2.0
 export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$LIBARCHIVE/lib/pkgconfig:$LIBSODIUM/lib/pkgconfig"
 export LD_LIBRARY_PATH="LD_LIBRARY_PATH:$LIBARCHIVE/lib:$LIBSODIUM/lib"
-export HAB_TEST_BIN_DIR=/home/travis/build/habitat-sh/habitat/target/debug
-export HAB_TEST_DEBUG=true
+export PATH=$PATH:/home/travis/build/habitat-sh/habitat/target/debug/
 
+export HAB_TEST_BIN_DIR=/home/travis/build/habitat-sh/habitat/target/debug
+cp ${HAB_TEST_BIN_DIR}/hab /usr/bin/hab
+cp ${HAB_TEST_BIN_DIR}/hab-sup /usr/bin/hab-sup
+
+# TODO
+export HAB_TEST_DEBUG=true
 
 adduser --system hab || true
 addgroup --system hab || true
 
 mkdir /hab
 chown hab:hab /hab
+hab origin key generate travis_testing_key
 
 # TODO
 # https://docs.travis-ci.com/user/pull-requests
