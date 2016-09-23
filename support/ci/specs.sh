@@ -29,10 +29,6 @@ export HAB_TEST_BIN_DIR=/home/travis/build/habitat-sh/habitat/target/debug
 #cp ${HAB_TEST_BIN_DIR}/hab /usr/bin/hab
 #cp ${HAB_TEST_BIN_DIR}/hab-sup /usr/bin/hab-sup
 
-dp_studio_bin=$(find /hab -name hab-studio-type-default.sh -type f)
-echo "Patching ${dp_studio_bin}"
-sed -i '23iecho "TACOS: $\{hab\}"' "${dp_studio_bin}"
-
 echo "BUSYBOX!"
 command -v busybox
 
