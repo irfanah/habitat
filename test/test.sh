@@ -34,16 +34,17 @@ if [ "${TRAVIS}" = "true" ]; then
     export PATH=$PATH:/home/travis/build/habitat-sh/habitat/target/debug/
     # TODO: move this outside of test.sh?
     HAB=/home/travis/build/habitat-sh/habitat/target/debug/hab
-    export DEBUG=true
+    #export DEBUG=true
 
     echo "TACOS!!!"
+    mkdir -p /hab/cache/keys
+    chmod 777 /hab/cache/keys
 
-    ls -la /hab/cache/keys
-    ${HAB} pkg install core/hab-studio
-    p=$(${HAB} pkg path core/hab-studio)
-    sed -i 's/set -eu/set -eux/' "${p}/bin/hab-studio"
-    sed -i '23iecho "TACOS: $\{hab\}"' "${p}/bin/hab-studio"
-    sed -i 's/set +e/set -eux/' "${p}/libexec/hab-studio-type-default.sh"
+    #${HAB} pkg install core/hab-studio
+    #p=$(${HAB} pkg path core/hab-studio)
+    #sed -i 's/set -eu/set -eux/' "${p}/bin/hab-studio"
+    #sed -i '23iecho "TACOS: $\{hab\}"' "${p}/bin/hab-studio"
+    #sed -i 's/set +e/set -eux/' "${p}/libexec/hab-studio-type-default.sh"
 
 
 else

@@ -63,7 +63,6 @@ describe "Habitat CLI" do
             # upon success
             ctx.register_dir "results"
             #`sed -i '23iecho "TACOS: $\{hab\}"' $(find /hab -name hab-studio-type-default.sh -type f)`
-            `mkdir -p /hab/cache/keys`
             `/home/travis/build/habitat-sh/habitat/target/debug/hab origin key generate spaceship`
             puts "LIST OF KEYS"
             `ls -latr /hab/cache/keys`
