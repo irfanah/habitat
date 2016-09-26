@@ -1,5 +1,7 @@
+
+# removed HAB_CACHE_KEY_PATH
+
 hab_env_vars = %w(HAB_AUTH_TOKEN
-                  HAB_CACHE_KEY_PATH
                   HAB_DEPOT_URL
                   HAB_ORG
                   HAB_ORIGIN
