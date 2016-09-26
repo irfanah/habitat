@@ -57,6 +57,10 @@ if [ "${TRAVIS}" = "true" ]; then
     ls -latr /hab/cache/keys
     cat /hab/cache/keys/*
     echo "DONE INSTALLING HAB-STUDIO"
+    hab origin key export core --type public
+    echo "DONE EXPORTING KEY"
+
+    export HAB_CACHE_KEY_PATH=/hab/cache/keys
 
 else
     HAB=/bin/hab

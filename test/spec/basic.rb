@@ -74,6 +74,9 @@ describe "Habitat CLI" do
             puts "DISPLAY KEYS"
             puts `cat /hab/cache/keys/* 2>&1`
             puts "END KEY DEBUGGING"
+            puts "ORIGIN = "
+            puts `echo $HAB_ORIGIN`
+            puts "DONE!"
 
             # building a package can take quite awhile, let's bump the timeout to
             # 60 seconds to be sure we finish in time.
