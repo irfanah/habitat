@@ -66,13 +66,13 @@ describe "Habitat CLI" do
 
             puts "KEY DEBUGGING"
             puts "PWD"
-            `pwd`
+            puts `pwd 2>&1`
             puts "ID"
-            `id`
+            puts `id 2>&1`
             puts "LIST KEYS"
-            `ls -la /hab/cache/keys`
+            puts `ls -la /hab/cache/keys 2>&1`
             puts "DISPLAY KEYS"
-            `cat /hab/cache/keys/*`
+            puts `cat /hab/cache/keys/* 2>&1`
             puts "END KEY DEBUGGING"
 
             # building a package can take quite awhile, let's bump the timeout to
