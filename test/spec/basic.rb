@@ -64,22 +64,22 @@ describe "Habitat CLI" do
             ctx.register_dir "results"
             #`sed -i '23iecho "TACOS: $\{hab\}"' $(find /hab -name hab-studio-type-default.sh -type f)`
 
-            puts "KEY DEBUGGING"
-            puts "PWD"
-            puts `pwd 2>&1`
-            puts "ID"
-            puts `id 2>&1`
-            puts "LIST KEYS"
-            puts `ls -la /hab/cache/keys 2>&1`
-            puts "DISPLAY KEYS"
-            puts `cat /hab/cache/keys/* 2>&1`
-            puts "END KEY DEBUGGING"
+            #puts "KEY DEBUGGING"
+            #puts "PWD"
+            #puts `pwd 2>&1`
+            #puts "ID"
+            #puts `id 2>&1`
+            #puts "LIST KEYS"
+            #puts `ls -la /hab/cache/keys 2>&1`
+            #puts "DISPLAY KEYS"
+            #puts `cat /hab/cache/keys/* 2>&1`
+            #puts "END KEY DEBUGGING"
 
             # building a package can take quite awhile, let's bump the timeout to
             # 60 seconds to be sure we finish in time.
             result = ctx.cmd_expect("studio build fixtures/simple_service",
                                          "I love it when a plan.sh comes together",
-                                         :timeout_seconds => 300)
+                                         :timeout_seconds => 300, :debug => true)
             # as the build command MUST complete, we check return code
             expect(result.exited?).to be true
             expect(result.exitstatus).to eq 0
