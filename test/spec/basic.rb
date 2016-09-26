@@ -77,6 +77,9 @@ describe "Habitat CLI" do
             puts "ORIGIN = "
             puts `echo $HAB_ORIGIN`
             puts "DONE!"
+            puts "CREATE STUDIO!"
+            puts `/home/travis/build/habitat-sh/habitat/target/debug/hab studio new`
+            puts `ls -latr /hab/studios/home--travis--build--habitat-sh--habitat--test/hab/cache/keys`
 
             puts `chmod 777 /hab/cache/keys`
             # building a package can take quite awhile, let's bump the timeout to
