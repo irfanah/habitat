@@ -34,11 +34,6 @@ adduser --system hab || true
 addgroup --system hab || true
 
 mkdir -p /hab/cache/keys
-echo "MONDAY GENERATING KEY"
-hab origin key generate travis_testing_key
-echo "MONDAY CAT ALL KEY"
-ls -la /hab/cache/keys
-cat /hab/cache/keys/*
 
 # TODO
 # https://docs.travis-ci.com/user/pull-requests

@@ -64,6 +64,11 @@ describe "Habitat CLI" do
             ctx.register_dir "results"
             #`sed -i '23iecho "TACOS: $\{hab\}"' $(find /hab -name hab-studio-type-default.sh -type f)`
 
+            puts "KEY DEBUGGING"
+            `ls -la /hab/cache/keys`
+            `cat /hab/cache/keys/*`
+            puts "END KEY DEBUGGING"
+
             # building a package can take quite awhile, let's bump the timeout to
             # 60 seconds to be sure we finish in time.
             result = ctx.cmd_expect("studio build fixtures/simple_service",
