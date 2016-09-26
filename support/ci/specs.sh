@@ -13,7 +13,7 @@ fi
 run_tests() {
   cd test || exit
   ./test.sh
-  cat ./logs/*.log
+  #cat ./logs/*.log
 }
 
 # set these here so Travis is happy, setting them in .travis.yml + sudo
@@ -26,22 +26,19 @@ export LD_LIBRARY_PATH="LD_LIBRARY_PATH:$LIBARCHIVE/lib:$LIBSODIUM/lib"
 export PATH=$PATH:/home/travis/build/habitat-sh/habitat/target/debug/
 
 export HAB_TEST_BIN_DIR=/home/travis/build/habitat-sh/habitat/target/debug
-#cp ${HAB_TEST_BIN_DIR}/hab /usr/bin/hab
-#cp ${HAB_TEST_BIN_DIR}/hab-sup /usr/bin/hab-sup
-
-echo "BUSYBOX!"
-command -v busybox
-
 
 # TODO
-export HAB_TEST_DEBUG=true
+#export HAB_TEST_DEBUG=true
 
 adduser --system hab || true
 addgroup --system hab || true
 
-mkdir /hab
-chown hab:hab /hab
+mkdir -p /hab/cache/keys
+echo "MONDAY GENERATING KEY"
 hab origin key generate travis_testing_key
+echo "MONDAY CAT ALL KEY"
+ls -la /hab/cache/keys
+cat /hab/cache/keys/*
 
 # TODO
 # https://docs.travis-ci.com/user/pull-requests

@@ -63,14 +63,6 @@ describe "Habitat CLI" do
             # upon success
             ctx.register_dir "results"
             #`sed -i '23iecho "TACOS: $\{hab\}"' $(find /hab -name hab-studio-type-default.sh -type f)`
-            `/home/travis/build/habitat-sh/habitat/target/debug/hab origin key generate spaceship`
-            puts "LIST OF KEYS"
-            `ls -latr /hab/cache/keys`
-            puts "KEY CONTENTS"
-            `find /hab/cache/keys -exec cat {} \;`
-            puts "TRYING TO EXPORT SECRET KEY"
-            `/home/travis/build/habitat-sh/habitat/target/debug/hab origin key export #{ctx.hab_origin} --type secret`
-            puts "DONE TRYING TO EXPORT SECRET KEY"
 
             # building a package can take quite awhile, let's bump the timeout to
             # 60 seconds to be sure we finish in time.

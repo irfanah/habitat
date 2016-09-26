@@ -349,7 +349,6 @@ module HabTesting
             show_env() if debug
             # passing output to | tee
             #fullcmdline = "#{@hab_bin} #{cmdline} | tee -a #{log_file_name()} 2>&1"
-            ENV['DEBUG'] = "true"
             fullcmdline = "#{@hab_bin} #{cmdline}"
             # record the command we'll be running in the log file
             `echo #{fullcmdline} >> #{log_file_name()}`
