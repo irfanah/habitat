@@ -65,7 +65,13 @@ describe "Habitat CLI" do
             #`sed -i '23iecho "TACOS: $\{hab\}"' $(find /hab -name hab-studio-type-default.sh -type f)`
 
             puts "KEY DEBUGGING"
+            puts "PWD"
+            `pwd`
+            puts "ID"
+            `id`
+            puts "LIST KEYS"
             `ls -la /hab/cache/keys`
+            puts "DISPLAY KEYS"
             `cat /hab/cache/keys/*`
             puts "END KEY DEBUGGING"
 
