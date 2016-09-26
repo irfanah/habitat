@@ -21,6 +21,13 @@ set -e
 # TODO
 set -x
 
+echo "####################################################################"
+echo "####################################################################"
+echo "####################################################################"
+echo "####################################################################"
+echo "####################################################################"
+echo "####################################################################"
+
 # The list of all specs to run after basic and env tests are run.
 # WITHOUT .rb suffix.
 all_specs=(crypto)
@@ -45,7 +52,11 @@ if [ "${TRAVIS}" = "true" ]; then
     #sed -i 's/set -eu/set -eux/' "${p}/bin/hab-studio"
     #sed -i '23iecho "TACOS: $\{hab\}"' "${p}/bin/hab-studio"
     #sed -i 's/set +e/set -eux/' "${p}/libexec/hab-studio-type-default.sh"
-
+    echo "INSTALLING HAB-STUDIO"
+    ${HAB} pkg install core/hab-studio
+    ls -latr /hab/cache/keys
+    cat /hab/cache/keys/*
+    echo "DONE INSTALLING HAB-STUDIO"
 
 else
     HAB=/bin/hab
