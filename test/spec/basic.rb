@@ -78,6 +78,7 @@ describe "Habitat CLI" do
             puts `echo $HAB_ORIGIN`
             puts "DONE!"
 
+            puts `chmod 777 /hab/cache/keys`
             # building a package can take quite awhile, let's bump the timeout to
             # 60 seconds to be sure we finish in time.
             result = ctx.cmd_expect("studio build fixtures/simple_service",
