@@ -353,7 +353,6 @@ module HabTesting
             # record the command we'll be running in the log file
             `echo #{fullcmdline} >> #{log_file_name()}`
             puts " → #{fullcmdline}"
-
             ENV["RUST_LOG"] = "debug"
             output_log = open(log_file_name(), 'a')
             begin
