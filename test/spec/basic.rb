@@ -88,7 +88,6 @@ describe "Habitat CLI" do
             `mkdir -p /hab/studios/home--travis--build--habitat-sh--habitat--test/hab/cache/keys`
             `cp /hab/cache/keys/* /hab/studios/home--travis--build--habitat-sh--habitat--test/hab/cache/keys`
             puts `chmod 777 /hab/cache/keys`
-            `mkdir -p /hab/studios/home--travis--build--habitat-sh--habitat--test/hab/cache/keys`
             # building a package can take quite awhile, let's bump the timeout to
             # 60 seconds to be sure we finish in time.
             result = ctx.cmd_expect("studio build fixtures/simple_service",
