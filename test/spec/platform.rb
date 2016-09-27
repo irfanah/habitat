@@ -354,6 +354,7 @@ module HabTesting
             `echo #{fullcmdline} >> #{log_file_name()}`
             puts " → #{fullcmdline}"
 
+            ENV["RUST_LOG"] = "debug"
             output_log = open(log_file_name(), 'a')
             begin
                 Open3.popen3(ENV, fullcmdline) do |stdin, stdout, stderr, wait_thread|
