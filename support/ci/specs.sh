@@ -19,6 +19,7 @@ run_tests() {
 
 # set these here so Travis is happy, setting them in .travis.yml + sudo
 # makes the tests unhappy.
+# TODO: check .travis.yml and sudo -E
 export COMPONENTS=bin
 export LIBSODIUM=/home/travis/pkgs/libsodium/1.0.8
 export LIBARCHIVE=/home/travis/pkgs/libarchive/3.2.0
