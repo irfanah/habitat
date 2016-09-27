@@ -62,32 +62,8 @@ describe "Habitat CLI" do
             # and if the tests pass, the directory will be cleaned up
             # upon success
             ctx.register_dir "results"
-            #`sed -i '23iecho "TACOS: $\{hab\}"' $(find /hab -name hab-studio-type-default.sh -type f)`
 
-            #puts "KEY DEBUGGING"
-            #puts "PWD"
-            #puts `pwd 2>&1`
-            #puts "ID"
-            #puts `id 2>&1`
-            #puts "LIST KEYS"
-            #puts `ls -la /hab/cache/keys 2>&1`
-            #puts "DISPLAY KEYS"
-            #puts `cat /hab/cache/keys/* 2>&1`
-            #puts "END KEY DEBUGGING"
-            #puts "ORIGIN = "
-            #puts `echo $HAB_ORIGIN`
-            #puts "DONE!"
-            #puts "CREATE STUDIO!"
-            #puts `RUST_LOG=debug /home/travis/build/habitat-sh/habitat/target/debug/hab studio new`
-            ##puts `ls -latr /hab/studios/home--travis--build--habitat-sh--habitat--test/hab/cache/keys`
-            ##puts `ls latr /hab/studios/home--travis--build--habitat-sh--habitat--test/hab`
-            #puts ` /home/travis/build/habitat-sh/habitat/target/debug/hab pkg install core/findutils`
-            #puts ` /home/travis/build/habitat-sh/habitat/target/debug/hab pkg exec core/findutils find /hab -name "*.key"`
-            #puts "VIM DIESEL"
-
-            #`mkdir -p /hab/studios/home--travis--build--habitat-sh--habitat--test/hab/cache/keys`
-            #`cp /hab/cache/keys/* /hab/studios/home--travis--build--habitat-sh--habitat--test/hab/cache/keys`
-            #puts `chmod 777 /hab/cache/keys`
+            # TODO: timeout!
             # building a package can take quite awhile, let's bump the timeout to
             # 60 seconds to be sure we finish in time.
             result = ctx.cmd_expect("studio build fixtures/simple_service",

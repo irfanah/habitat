@@ -44,23 +44,8 @@ if [ "${TRAVIS}" = "true" ]; then
     adduser --system hab || true
     addgroup --system hab || true
 
-    #${HAB} pkg install core/hab-studio
-    #p=$(${HAB} pkg path core/hab-studio)
-    #sed -i 's/set -eu/set -eux/' "${p}/bin/hab-studio"
-    #sed -i '23iecho "TACOS: $\{hab\}"' "${p}/bin/hab-studio"
-    #sed -i 's/set +e/set -eux/' "${p}/libexec/hab-studio-type-default.sh"
-    #echo "INSTALLING HAB-STUDIO"
-    #${HAB} pkg install core/hab-studio
-    #ls -latr /hab/cache/keys
-    #cat /hab/cache/keys/*
-    #hab origin key export core --type public
-
     export HAB_TEST_BIN_DIR=/home/travis/build/habitat-sh/habitat/target/debug
 
-    #export "UNSETTING SUDO_USER"
-    #unset SUDO_USER
-
-    #export HAB_CACHE_KEY_PATH=/hab/cache/keys
     export HAB_TEST_DEBUG=true
 else
     HAB=/bin/hab
