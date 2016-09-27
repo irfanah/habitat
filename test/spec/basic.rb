@@ -81,6 +81,7 @@ describe "Habitat CLI" do
             puts `RUST_LOG=debug /home/travis/build/habitat-sh/habitat/target/debug/hab studio new`
             #puts `ls -latr /hab/studios/home--travis--build--habitat-sh--habitat--test/hab/cache/keys`
             #puts `ls latr /hab/studios/home--travis--build--habitat-sh--habitat--test/hab`
+            puts ` /home/travis/build/habitat-sh/habitat/target/debug/hab pkg install core/findutils`
             puts ` /home/travis/build/habitat-sh/habitat/target/debug/hab pkg exec core/findutils find /hab -name "*.key"`
             puts "VIM DIESEL"
 
