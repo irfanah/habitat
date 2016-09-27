@@ -29,6 +29,7 @@ matrix:
         - libssl-dev
         - libzmq3-dev
         - pkg-config
+        - strace
     cache:
       apt: true
       cargo: true
