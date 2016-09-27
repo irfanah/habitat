@@ -61,7 +61,7 @@ if [ "${TRAVIS}" = "true" ]; then
     echo "DONE EXPORTING KEY"
 
     export HAB_CACHE_KEY_PATH=/hab/cache/keys
-
+    export HAB_TEST_DEBUG=true
 else
     HAB=/bin/hab
 fi
