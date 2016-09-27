@@ -21,11 +21,11 @@ hab_ports.each do |p|
     end
 end
 
-hab_env_vars.each do |e|
-    describe os_env(e) do
-        its('content') { should eq nil }
-    end
-end
+#hab_env_vars.each do |e|
+#    describe os_env(e) do
+#        its('content') { should eq nil }
+#    end
+#end
 
 describe file("results") do
     it { should_not exist }

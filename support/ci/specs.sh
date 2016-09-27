@@ -25,16 +25,6 @@ export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$LIBARCHIVE/lib/pkgconfig:$LIBSODIUM/li
 export LD_LIBRARY_PATH="LD_LIBRARY_PATH:$LIBARCHIVE/lib:$LIBSODIUM/lib"
 export PATH=$PATH:/home/travis/build/habitat-sh/habitat/target/debug/
 
-export HAB_TEST_BIN_DIR=/home/travis/build/habitat-sh/habitat/target/debug
-
-# TODO
-#export HAB_TEST_DEBUG=true
-
-adduser --system hab || true
-addgroup --system hab || true
-
-mkdir -p /hab/cache/keys
-
 # TODO
 # https://docs.travis-ci.com/user/pull-requests
 if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then

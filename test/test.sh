@@ -21,13 +21,6 @@ set -e
 # TODO
 set -x
 
-echo "####################################################################"
-echo "####################################################################"
-echo "####################################################################"
-echo "####################################################################"
-echo "####################################################################"
-echo "####################################################################"
-
 # The list of all specs to run after basic and env tests are run.
 # WITHOUT .rb suffix.
 all_specs=(crypto)
@@ -41,26 +34,31 @@ if [ "${TRAVIS}" = "true" ]; then
     export PATH=$PATH:/home/travis/build/habitat-sh/habitat/target/debug/
     # TODO: move this outside of test.sh?
     HAB=/home/travis/build/habitat-sh/habitat/target/debug/hab
-    #export DEBUG=true
 
-    echo "TACOS!!!"
-    mkdir -p /hab/cache/keys
-    chmod 777 /hab/cache/keys
+    echo "XXXXXXXXXX TACOS XXXXXXXXXX"
+    #sudo mkdir -p /hab/cache/keys
+    #sudo chmod 777 /hab/cache/keys
+
+    sudo adduser --system hab || true
+    sudo addgroup --system hab || true
 
     #${HAB} pkg install core/hab-studio
     #p=$(${HAB} pkg path core/hab-studio)
     #sed -i 's/set -eu/set -eux/' "${p}/bin/hab-studio"
     #sed -i '23iecho "TACOS: $\{hab\}"' "${p}/bin/hab-studio"
     #sed -i 's/set +e/set -eux/' "${p}/libexec/hab-studio-type-default.sh"
-    echo "INSTALLING HAB-STUDIO"
-    ${HAB} pkg install core/hab-studio
-    ls -latr /hab/cache/keys
-    cat /hab/cache/keys/*
-    echo "DONE INSTALLING HAB-STUDIO"
-    hab origin key export core --type public
-    echo "DONE EXPORTING KEY"
+    #echo "INSTALLING HAB-STUDIO"
+    #${HAB} pkg install core/hab-studio
+    #ls -latr /hab/cache/keys
+    #cat /hab/cache/keys/*
+    #hab origin key export core --type public
 
-    export HAB_CACHE_KEY_PATH=/hab/cache/keys
+    export HAB_TEST_BIN_DIR=/home/travis/build/habitat-sh/habitat/target/debug
+
+    #export "UNSETTING SUDO_USER"
+    #unset SUDO_USER
+
+    #export HAB_CACHE_KEY_PATH=/hab/cache/keys
     export HAB_TEST_DEBUG=true
 else
     HAB=/bin/hab
@@ -76,7 +74,7 @@ install_package() {
     description=$2
 
     echo "» Installing ${description}"
-    ${HAB} pkg install "${pkg_to_install}"
+    sudo ${HAB} pkg install "${pkg_to_install}"
     echo "★ Installed ${description}"
 }
 
@@ -132,11 +130,11 @@ ${INSPEC} exec ./hab_inspec/controls/clean_env.rb
 
 env
 echo "» Checking basic build/install/run functionality"
-${RSPEC} ./spec/basic.rb
+sudo "${RSPEC}" ./spec/basic.rb
 
 for s in "${all_specs[@]}"; do
     echo "» Running specs from ${s}"
-    ${RSPEC} "./spec/${s}.rb"
+    sudo -E "${RSPEC}" "./spec/${s}.rb"
 done
 
 
