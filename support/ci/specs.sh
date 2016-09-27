@@ -1,5 +1,4 @@
 #!/bin/bash
-
 git log HEAD~1..HEAD | grep -q '!!! Temporary Commit !!!'
 is_tmp_commit=$?
 
@@ -7,6 +6,8 @@ is_tmp_commit=$?
 if [[ $is_tmp_commit = 0 ]]; then
   exit 0
 fi
+
+unset SUDO_USER
 
 #set -e
 

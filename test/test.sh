@@ -36,11 +36,13 @@ if [ "${TRAVIS}" = "true" ]; then
     HAB=/home/travis/build/habitat-sh/habitat/target/debug/hab
 
     echo "XXXXXXXXXX TACOS XXXXXXXXXX"
-    #sudo mkdir -p /hab/cache/keys
-    #sudo chmod 777 /hab/cache/keys
+    #mkdir -p /hab/cache/keys
+    #chmod 777 /hab/cache/keys
 
-    sudo adduser --system hab || true
-    sudo addgroup --system hab || true
+    mkdir /hab
+
+    adduser --system hab || true
+    addgroup --system hab || true
 
     #${HAB} pkg install core/hab-studio
     #p=$(${HAB} pkg path core/hab-studio)
@@ -74,7 +76,7 @@ install_package() {
     description=$2
 
     echo "» Installing ${description}"
-    sudo ${HAB} pkg install "${pkg_to_install}"
+    ${HAB} pkg install "${pkg_to_install}"
     echo "★ Installed ${description}"
 }
 
@@ -130,11 +132,11 @@ ${INSPEC} exec ./hab_inspec/controls/clean_env.rb
 
 env
 echo "» Checking basic build/install/run functionality"
-sudo "${RSPEC}" ./spec/basic.rb
+"${RSPEC}" ./spec/basic.rb
 
 for s in "${all_specs[@]}"; do
     echo "» Running specs from ${s}"
-    sudo -E "${RSPEC}" "./spec/${s}.rb"
+    "${RSPEC}" "./spec/${s}.rb"
 done
 
 
