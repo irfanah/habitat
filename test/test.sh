@@ -132,11 +132,11 @@ ${INSPEC} exec ./hab_inspec/controls/clean_env.rb
 
 env
 echo "» Checking basic build/install/run functionality"
-"${RSPEC}" ./spec/basic.rb
+${RSPEC} ./spec/basic.rb
 
 for s in "${all_specs[@]}"; do
     echo "» Running specs from ${s}"
-    "${RSPEC}" "./spec/${s}.rb"
+    ${RSPEC} "./spec/${s}.rb"
 done
 
 
