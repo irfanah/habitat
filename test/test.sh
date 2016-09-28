@@ -49,7 +49,7 @@ if [ "${TRAVIS}" = "true" ]; then
     echo "LDD!"
     ldd /home/travis/build/habitat-sh/habitat/target/debug/hab-sup
 
-    export LD_LIBRARY_PATH="/lib:/usr/lib:$LD_LIBRARY_PATH"
+    export LD_LIBRARY_PATH="/lib:/usr/lib:/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH"
     ldconfig
     ldconfig -p
     export HAB_TEST_DEBUG=true
