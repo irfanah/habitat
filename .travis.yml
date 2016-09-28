@@ -30,6 +30,8 @@ matrix:
         - libzmq3-dev
         - pkg-config
         - strace
+        - libexpat1
+        - libexpat1-dev
     cache:
       apt: true
       cargo: true
