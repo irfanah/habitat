@@ -45,9 +45,11 @@ if [ "${TRAVIS}" = "true" ]; then
     addgroup --system hab || true
 
     export HAB_TEST_BIN_DIR=/home/travis/build/habitat-sh/habitat/target/debug
-    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/lib/x86_64-linux-gnu/libexpat.so.1"
+    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/lib:/usr/lib:/lib/x86_64-linux-gnu"
     echo "LOOKING FOR EXPAT"
     find / -name libexpat.so.1
+    echo "LDCONFIG!"
+    ldconfig -p
     export HAB_TEST_DEBUG=true
 else
     HAB=/bin/hab
