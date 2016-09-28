@@ -47,6 +47,7 @@ if [ "${TRAVIS}" = "true" ]; then
     export HAB_TEST_BIN_DIR=/home/travis/build/habitat-sh/habitat/target/debug
     env
     export LD_LIBRARY_PATH="/lib:/usr/lib:$LD_LIBRARY_PATH"
+    ldconfig
     ldconfig -p
     export HAB_TEST_DEBUG=true
 else
