@@ -349,7 +349,7 @@ module HabTesting
             show_env() if debug
             # passing output to | tee
             #fullcmdline = "#{@hab_bin} #{cmdline} | tee -a #{log_file_name()} 2>&1"
-            fullcmdline = "/usr/bin/strace #{@hab_bin} #{cmdline}"
+            fullcmdline = "/usr/bin/strace -y #{@hab_bin} #{cmdline}"
             # record the command we'll be running in the log file
             `echo #{fullcmdline} >> #{log_file_name()}`
             puts " → #{fullcmdline}"
