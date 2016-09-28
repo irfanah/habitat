@@ -46,6 +46,8 @@ if [ "${TRAVIS}" = "true" ]; then
 
     export HAB_TEST_BIN_DIR=/home/travis/build/habitat-sh/habitat/target/debug
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/lib/x86_64-linux-gnu/libexpat.so.1"
+    echo "LOOKING FOR EXPAT"
+    find / -name libexpat.so.1
     export HAB_TEST_DEBUG=true
 else
     HAB=/bin/hab
