@@ -14,6 +14,7 @@ matrix:
     - AFFECTED_DIRS="components/director|components/hab|components/sup"
     - LIBARCHIVE_LIB_DIR=/home/travis/pkgs/libarchive/3.2.0/lib
     - LIBARCHIVE_INCLUDE_DIR=/home/travis/pkgs/libarchive/3.2.0/include
+    - PKG_CONFIG_PATH=/home/travis/pkgs/libarchive/3.2.0/lib/pkgconfig:$PKG_CONFIG_PATH
     rust: stable
     sudo: required
     addons:
