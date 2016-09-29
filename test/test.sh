@@ -48,7 +48,8 @@ if [ "${TRAVIS}" = "true" ]; then
     env
     echo "LDD!"
     ldd /home/travis/build/habitat-sh/habitat/target/debug/hab-sup
-
+    echo "LIBARCHIVE!"
+    find / -name libarchive*.so -exec ldd {} \;
     export LD_LIBRARY_PATH="/lib:/usr/lib:$LD_LIBRARY_PATH"
     ldconfig
     ldconfig -p
