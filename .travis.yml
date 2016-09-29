@@ -12,6 +12,8 @@ matrix:
     env:
     - COMPONENTS=bin LIBSODIUM=/home/travis/pkgs/libsodium/1.0.8 LIBARCHIVE=/home/travis/pkgs/libarchive/3.2.0 PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$LIBARCHIVE/lib/pkgconfig:$LIBSODIUM/lib/pkgconfig" LD_LIBRARY_PATH="LD_LIBRARY_PATH:$LIBARCHIVE/lib:$LIBSODIUM/lib"
     - AFFECTED_DIRS="components/director|components/hab|components/sup"
+    - LIBARCHIVE_LIB_DIR=/home/travis/pkgs/libarchive/3.2.0/lib
+    - LIBARCHIVE_INCLUDE_DIR=/home/travis/pkgs/libarchive/3.2.0/include
     rust: stable
     sudo: required
     addons:
@@ -29,9 +31,6 @@ matrix:
         - libssl-dev
         - libzmq3-dev
         - pkg-config
-        - strace
-        - libexpat1
-        - libexpat1-dev
     cache:
       apt: true
       cargo: true
