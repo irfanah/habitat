@@ -10,12 +10,14 @@ mkdir -p ${BOOTSTRAP_DIR}
 # make sure it's clean!
 rm -rf ${TEST_BIN_DIR}
 mkdir -p ${TEST_BIN_DIR}
+mkdir -p /hab/cache/keys
 
 wget -O hab.tar.gz "${HAB_DOWNLOAD_URL}"
 tar xvzf ./hab.tar.gz --strip 1 -C ${BOOTSTRAP_DIR}
 
 TRAVIS_HAB=${BOOTSTRAP_DIR}/hab
 ${TRAVIS_HAB} origin key generate hab_travis
+cat /hab/cache/keys/*
 
 # REQUIRED to build the hab binary outside of core
 export HAB_ORIGIN=hab_travis
