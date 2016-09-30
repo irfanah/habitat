@@ -31,9 +31,10 @@ cat banner
 
 # load in common test env vars
 if [ "${TRAVIS}" = "true" ]; then
-    export PATH=$PATH:/home/travis/build/habitat-sh/habitat/target/debug/
-    # TODO: move this outside of test.sh?
-    HAB=/home/travis/build/habitat-sh/habitat/target/debug/hab
+    export HAB_TEST_BIN_DIR=/root/hab_bins
+
+    export PATH=$PATH:$HAB_TEST_BIN_DIR
+    HAB=${HAB_TEST_BIN_DIR}/hab
 
     echo "XXXXXXXXXX TACOS XXXXXXXXXX"
     #mkdir -p /hab/cache/keys
@@ -43,17 +44,6 @@ if [ "${TRAVIS}" = "true" ]; then
 
     adduser --system hab || true
     addgroup --system hab || true
-
-    export HAB_TEST_BIN_DIR=/home/travis/build/habitat-sh/habitat/target/debug
-    env
-    echo "LDD!"
-    ldd /home/travis/build/habitat-sh/habitat/target/debug/hab-sup
-    echo "LIBARCHIVE!"
-    find / -name libarchive*.so -exec ldd {} \;
-    export LD_LIBRARY_PATH="/lib:/usr/lib:$LD_LIBRARY_PATH"
-    ldconfig
-    ldconfig -p
-    export HAB_TEST_DEBUG=true
 else
     HAB=/bin/hab
 fi
