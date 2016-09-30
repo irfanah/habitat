@@ -36,3 +36,4 @@ find /hab/pkgs/hab_travis/hab/ -type f -name hab -exec cp {} ${TEST_BIN_DIR} \;
 find /hab/pkgs/hab_travis/hab-sup/ -type f -name hab-sup -exec cp {} ${TEST_BIN_DIR} \;
 
 echo "SHIPPING OUT TO TOPEKA"
+./test/test.sh
