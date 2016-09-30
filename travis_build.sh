@@ -21,6 +21,8 @@ cat /hab/cache/keys/*
 
 # REQUIRED to build the hab binary outside of core
 export HAB_ORIGIN=hab_travis
+# pretend we're not using sudo
+unset SUDO_USER
 
 # we have to cd here so hab's plan.sh can see the VERSION file
 ${TRAVIS_HAB} studio build components/hab
@@ -36,5 +38,4 @@ find /hab/pkgs/hab_travis/hab/ -type f -name hab -exec cp {} ${TEST_BIN_DIR} \;
 find /hab/pkgs/hab_travis/hab-sup/ -type f -name hab-sup -exec cp {} ${TEST_BIN_DIR} \;
 
 echo "SHIPPING OUT TO TOPEKA"
-unset SUDO_USER
 ./test/test.sh

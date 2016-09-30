@@ -40,8 +40,6 @@ if [ "${TRAVIS}" = "true" ]; then
     #mkdir -p /hab/cache/keys
     #chmod 777 /hab/cache/keys
 
-    mkdir /hab
-
     adduser --system hab || true
     addgroup --system hab || true
 else
