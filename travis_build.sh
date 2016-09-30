@@ -30,11 +30,14 @@ export HAB_ORIGIN=hab_travis
 # pretend we're not using sudo
 unset SUDO_USER
 
+# TODO:
+# maybe: hab studio build components/hab | pv -i 10 -c -l 2>&1 > foo.txt
+
 # we have to cd here so hab's plan.sh can see the VERSION file
 echo "Building hab"
-${TRAVIS_HAB} studio build components/hab >> /root/hab_build_log 2>&1
+${TRAVIS_HAB} studio build components/hab | pv -i 10 -c -l 2>&1 > /root/travis_build.log
 echo "Building hab-sup"
-${TRAVIS_HAB} studio build components/sup >> /root/hab_build_log 2>&1
+${TRAVIS_HAB} studio build components/sup | pv -i 10 -c -l 2>&1 > /root/travis_build_output.log
 
 echo "Installing hab and hab-sup"
 # install the artifacts

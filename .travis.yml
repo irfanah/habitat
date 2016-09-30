@@ -24,6 +24,7 @@ matrix:
         - curl
         - libssl-dev
         - wget
+        - pv
     cache:
       apt: true
       cargo: true
