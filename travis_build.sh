@@ -1,4 +1,11 @@
 #!/bin/bash
+
+# This script builds hab and hab-sup from source via a Habitat studio.
+# The binaries are then extracted and copied to /root/hab_bins
+# where rpsec uses them during testing. We do this to ensure that
+# hab and hab-sup are built with the correct dependencies without
+# linking any deps that are available on Travis.
+
 set -e
 
 BOOTSTRAP_DIR=/root/travis_bootstrap
@@ -25,8 +32,8 @@ export HAB_ORIGIN=hab_travis
 unset SUDO_USER
 
 # we have to cd here so hab's plan.sh can see the VERSION file
-${TRAVIS_HAB} studio build components/hab
-${TRAVIS_HAB} studio build components/sup
+${TRAVIS_HAB} studio build components/hab >> /root/hab_build_log 2>&1
+${TRAVIS_HAB} studio build components/sup >> /root/hab_build_log 2>&1
 
 # install the artifacts
 ${TRAVIS_HAB} pkg install ./results/*.hart
