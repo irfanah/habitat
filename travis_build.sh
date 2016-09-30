@@ -24,7 +24,6 @@ tar xvzf ./hab.tar.gz --strip 1 -C ${BOOTSTRAP_DIR}
 
 TRAVIS_HAB=${BOOTSTRAP_DIR}/hab
 ${TRAVIS_HAB} origin key generate hab_travis
-cat /hab/cache/keys/*
 
 # REQUIRED to build the hab binary outside of core
 export HAB_ORIGIN=hab_travis
@@ -32,9 +31,12 @@ export HAB_ORIGIN=hab_travis
 unset SUDO_USER
 
 # we have to cd here so hab's plan.sh can see the VERSION file
+echo "Building hab"
 ${TRAVIS_HAB} studio build components/hab >> /root/hab_build_log 2>&1
+echo "Building hab-sup"
 ${TRAVIS_HAB} studio build components/sup >> /root/hab_build_log 2>&1
 
+echo "Installing hab and hab-sup"
 # install the artifacts
 ${TRAVIS_HAB} pkg install ./results/*.hart
 
