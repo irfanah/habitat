@@ -8,12 +8,10 @@ env:
   - PATH=$HOME/bin:$HOME/.cargo/bin:$PATH
 matrix:
   include:
-  - language: rust
+  - language: ruby
+    rvm: 2.3.1
     env:
-    - COMPONENTS=bin LIBSODIUM=/home/travis/pkgs/libsodium/1.0.8 LIBARCHIVE=/home/travis/pkgs/libarchive/3.2.0 PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$LIBARCHIVE/lib/pkgconfig:$LIBSODIUM/lib/pkgconfig" LD_LIBRARY_PATH="LD_LIBRARY_PATH:$LIBARCHIVE/lib:$LIBSODIUM/lib"
     - AFFECTED_DIRS="components/director|components/hab|components/sup"
-    - PKG_CONFIG_PATH=/home/travis/pkgs/libarchive/3.2.0/lib/pkgconfig:$PKG_CONFIG_PATH
-    rust: stable
     sudo: required
     addons:
       apt:
@@ -24,19 +22,14 @@ matrix:
         - ca-certificates
         - cmake
         - curl
-        - libbz2-dev
-        - liblzma-dev
-        - libprotobuf-dev
         - libssl-dev
-        - libzmq3-dev
-        - pkg-config
         - wget
     cache:
       apt: true
       cargo: true
       directories:
-      - "$HOME/rust"
       - "$HOME/pkgs"
+      - /root/travis_bootstrap
       - target
     before_install:
     - ./support/ci/fast_pass.sh || exit 0
